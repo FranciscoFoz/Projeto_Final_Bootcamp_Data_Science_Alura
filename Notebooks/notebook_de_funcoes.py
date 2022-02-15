@@ -5,7 +5,31 @@
 Original file is located at
     https://colab.research.google.com/drive/1zQMGbtZ3qG_CCBCOZ1Pl6-ea9irlXmW1
 
-# Bootcamp Data Science Alura - Projeto Final </font>
+#Bootcamp Data Science Alura - Projeto Final
+
+## Requirements
+
+!pip install pandas==1.3.5
+!pip install openpyxl==3.0.9
+!pip install numpy==1.21.0
+!pip install matplotlib==3.4.2
+!pip install imgaug==0.2.9
+!pip install scikit-learn==1.0.2
+!pip install scikit-optimize==0.9
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split, cross_validate,RepeatedStratifiedKFold
+from sklearn.ensemble import BaggingClassifier, GradientBoostingClassifier,RandomForestClassifier
+from sklearn.metrics import accuracy_score,classification_report, roc_auc_score, ConfusionMatrixDisplay, RocCurveDisplay
+from sklearn.datasets import load_digits
+from numpy.ma import MaskedArray
+import sklearn.utils.fixes
+sklearn.utils.fixes.MaskedArray = MaskedArray
+from skopt import BayesSearchCV
+
 
 Notebook de funções
 
