@@ -518,13 +518,13 @@ def grafico_matriz_confusao(modelo,titulo):
 3.1 roda_modelo
 """
 
-def roda_modelo(modelo,dados, ramdom_seed):
+def roda_modelo(modelo,dados):
 
   '''
   Esta função rodará o modelo, imprimirá o AUC médio e 
   o relatório da classificação.
   '''
-  ramdom_seed
+  np.random.seed(354354)
 
   x_columns = dados.columns
   y = dados['ICU']
