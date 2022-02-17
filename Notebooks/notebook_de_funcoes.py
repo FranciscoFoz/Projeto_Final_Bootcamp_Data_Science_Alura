@@ -552,6 +552,12 @@ def roda_n_modelos(modelo,dados,n):
 
   '''
   Esta função rodará n vezes o modelo e imprimirá o intervalo do auc médio gerado.
+  
+  modelo: modelo que será rodado dentro da função.
+
+  dados: dados que serão transformados dentro da função.
+
+  n: quantidade de vezes que o modelo irá rodar.
   '''
   np.random.seed(354354)
 
@@ -579,11 +585,18 @@ def roda_n_modelos(modelo,dados,n):
 3.3 otimizar_param_bayesiano
 """
 
-def otimizar_param_bayesiano(modelo,params):
+def otimizar_param_bayesiano(modelo,params,dados):
 
   '''
   Esta função irá gerar os melhores hiperparamentros 
   através de um cálculo da estimativa bayesiana.
+  
+  modelo: modelo que será rodado dentro da função.
+  
+  paramns: parametros que serão testados no modelo para verificar qual é o melhor.
+
+  dados: dados que serão transformados dentro da função.
+
   '''
   np.random.seed(354354)
   x_columns = dados.columns
