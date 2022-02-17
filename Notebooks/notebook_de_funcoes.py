@@ -477,11 +477,17 @@ def grafico_percentual_diferenca_indicadores_vitais():
 2.9 grafico_matriz_confusao
 """
 
-def grafico_matriz_confusao(modelo,titulo):
+def grafico_matriz_confusao(modelo,titulo,dados):
   
   '''
   Esta função criará o gráfico da matriz de confusão de acordo 
   com o modelo escolhido.
+  
+  modelo: modelo que será rodado dentro da função.
+  
+  titulo: título do gráfico que aparecerá acima dele.
+
+  dados: dados que serão transformados dentro da função.
   '''
   np.random.seed(354354)
 
@@ -516,6 +522,10 @@ def roda_modelo(modelo,dados):
   '''
   Esta função rodará o modelo, imprimirá o AUC médio e 
   o relatório da classificação.
+  
+  modelo: modelo que será rodado dentro da função.
+
+  dados: dados que serão transformados dentro da função.
   '''
   np.random.seed(354354)
 
