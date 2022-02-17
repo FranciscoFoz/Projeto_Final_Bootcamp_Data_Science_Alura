@@ -61,18 +61,22 @@ def preenche_tabela(dados):
   return dados_finais
 
 """ 
-1.2 prepare_window
+1.2 prepara_janela
 """
 
-def prepare_window(rows):
-  
+def prepara_janela(linhas):
+
   '''
   Esta função irá localizar todas as linhas que possuam janela 
-  entre "0-2" e UTI igual a 1, retornando as linhas.                                                   
+  entre "0-2" e UTI igual a 1, retornando as linhas.  
+
+  linahs: linhas que serão transformadas na tabela
+                                                 
   '''
-  if(np.any(rows['ICU'])):                                                      
-    rows.loc[rows['WINDOW']=='0-2','ICU'] = 1                                   #Condição se para localizar as linhas com os filtros desejados.
-  return rows.loc[rows['WINDOW'] == '0-2']
+  if(np.any(linhas['ICU'])):                                                      
+    linhas.loc[linhas['WINDOW']=='0-2','ICU'] = 1                               #Condição se para localizar as linhas com os filtros desejados.
+  return linhas.loc[linhas['WINDOW'] == '0-2']
+
 
 """
 1.3 excluir_coluna_id_paciente
