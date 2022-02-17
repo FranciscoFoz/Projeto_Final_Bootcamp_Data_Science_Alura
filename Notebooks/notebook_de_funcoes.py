@@ -10,14 +10,6 @@ Original file is located at
 
 ## Requirements
 """
-!pip install pandas==1.3.5
-!pip install openpyxl==3.0.9
-!pip install numpy==1.21.0
-!pip install matplotlib==3.4.2
-!pip install imgaug==0.2.9
-!pip install scikit-learn==1.0.2
-!pip install scikit-optimize==0.9
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
