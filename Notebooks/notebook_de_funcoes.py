@@ -37,6 +37,9 @@ def remover_pacientes_com_primeira_janela_positiva_para_UTI(dados):
   '''
   Esta função irá remover os pacientes que possuam resultado positivo(1) 
   para entrada na UTI dentro da primeira janela (0-2)  
+  
+  dados: dados que o modelo terá como entrada para realizar as transformações nele
+
   '''
   a_remover = dados.query("WINDOW == '0-2' and ICU == 1")['PATIENT_VISIT_IDENTIFIER'].values            #Query dos pacientes que possuam a primeira janela e resultado positivo
   dados_limpos = dados.query("PATIENT_VISIT_IDENTIFIER not in @a_remover")                              #Query removendo os pacientes na condição acima
@@ -51,6 +54,8 @@ def preenche_tabela(dados):
   '''
   Esta função irá preencher a tabela onde esteja NAN com os 
   valores anteriores e depois com os posteriores.
+  
+  dados: dados que o modelo terá como entrada para realizar as transformações nele
   '''
   features_continuas_colunas = dados.iloc[:,4:-2].columns                                                                                                   #Selecionar colunas de variáveis contínuas
   features_continuas = dados.groupby('PATIENT_VISIT_IDENTIFIER', as_index=False)[features_continuas_colunas].fillna(method='bfill').fillna(method='ffill')  #Preencher os dados NAN da tabela
@@ -70,7 +75,7 @@ def prepara_janela(linhas):
   Esta função irá localizar todas as linhas que possuam janela 
   entre "0-2" e UTI igual a 1, retornando as linhas.  
 
-  linahs: linhas que serão transformadas na tabela
+  linhas: linhas que serão transformadas na tabela
                                                  
   '''
   if(np.any(linhas['ICU'])):                                                      
@@ -86,6 +91,9 @@ def excluir_coluna_id_paciente(dados):
 
   '''
   Esta função irá excluir a coluna do ID do paciente.
+  
+  dados: dados que o modelo terá como entrada para realizar as 
+  transformações nele
   '''
   dados_sem_coluna_id_paciente = dados.drop(['PATIENT_VISIT_IDENTIFIER'],axis=1)      #Excluir coluna do id do paciente
   return dados_sem_coluna_id_paciente
@@ -98,6 +106,8 @@ def transformar_AGE_PERCENTIL_em_dados_categoricos(dados):
   '''
   
   Esta função irá transformar a coluna AGE Percentil em dados categóricos.
+  
+  dados: dados que o modelo terá como entrada para realizar as transformações nele
   '''
   dados.AGE_PERCENTIL = dados.AGE_PERCENTIL.astype('category').cat.codes                              #Transformar coluna AGE PECENTIL em dados categóricos
   return dados
@@ -115,6 +125,11 @@ def remover_variaveis_correlacionadas(dados,valor_de_corte):
   Criará uma matriz de correlação entre eles, permanecendo apenas com 
   o triângulo superior.
   Excluirá as colunas com correção passada como parâmetro.
+  
+  
+  dados: dados que o modelo terá como entrada para realizar as transformações nele
+  
+  valor_de_corte: valor de corte do índice de correlação das variáveis.
   '''
   matriz_corr = dados.iloc[:,3:-2].corr().abs()                                                               #Filtrar dados correlacionando-os e transformando-os em números absolutos.
   matriz_superior = matriz_corr.where(np.triu(np.ones(matriz_corr.shape),k=1).astype(np.bool))                #Criar matriz superior da matriz de correlação
@@ -130,6 +145,9 @@ def limpar_colunas_com_valores_unicos(dados):
   
   '''
   Esta função irá excluir as colunas que possuíam valores únicos de -1.
+  
+  dados: dados que o modelo terá como entrada para realizar as transformações nele
+
   
   '''
   dados = dados.drop(['ALBUMIN_DIFF','BE_ARTERIAL_DIFF','BE_VENOUS_DIFF','BIC_ARTERIAL_DIFF','BIC_VENOUS_DIFF','BILLIRUBIN_DIFF','BLAST_DIFF','CALCIUM_DIFF',
@@ -178,14 +196,16 @@ def grafico_total_pacientes():
 2.2 grafico_quantidade_entrada_e_nao_entrada_UTI
 """
 
-def grafico_quantidade_entrada_e_nao_entrada_UTI():
+def grafico_quantidade_entrada_e_nao_entrada_UTI(dados):
 
   '''
   Esta função criará um gráfico de com a quantidade de pacientes que 
   deram e não deram entrada na UTI.
+
+  dados: dados que serão transformados dentro da função.
   '''
                                            
-  tabela_freq_entrada_UTI = pd.DataFrame(dados_sem_valores_unicos['ICU'].value_counts())     #Criar DataFrame com a quantidade
+  tabela_freq_entrada_UTI = pd.DataFrame(dados['ICU'].value_counts())     #Criar DataFrame com a quantidade
   tabela_freq_entrada_UTI.columns = ['UTI']                                                  #Renomear coluna
   tabela_freq_entrada_UTI.index = ['Não','Sim']                                              #Renomear índice
 
@@ -240,7 +260,7 @@ def grafico_quantidade_entrada_e_nao_entrada_UTI():
             color='black')                                                       #Escolher a cor
 
   plt.show()
-
+    
 """
 2.3 grafico_abaixo_acima_65anos
 """
@@ -286,15 +306,18 @@ def grafico_abaixo_acima_65anos():
 2.4 faixa_etaria_entrada_UTI
 """
 
-def faixa_etaria_entrada_UTI():
+def faixa_etaria_entrada_UTI(dados):
 
   '''
   Esta função criará o gráfico comparativo entre as faixas etárias 
   entre os pacientes que tiveram ou não entrada na UTI.
+
+  dados: dados que o modelo terá como entrada para realizar as
+  transformações nele
   '''
-  
+
   rotulo = {5:'51-60 anos', 8:'81-90 anos', 0:'0-10 anos', 3:'31-40 anos', 6:'61-70 anos', 1:'11-20 anos', 4:'41-50 anos', 7:'71-80 anos',2:'21-30 anos', 9:'Acima de 90 anos'}  #Rótulos da faixa etária
-  tabela_freq = pd.DataFrame(data={'FAIXA_ETARIA': list(dados_sem_valores_unicos['AGE_PERCENTIL']), 'UTI': list(dados_sem_valores_unicos['ICU'])})                                     #Criar dataframe
+  tabela_freq = pd.DataFrame(data={'FAIXA_ETARIA': list(dados['AGE_PERCENTIL']), 'UTI': list(dados['ICU'])})                                     #Criar dataframe
   tabela_freq['FAIXA_ETARIA'] = tabela_freq['FAIXA_ETARIA'].map(rotulo)                                                                                                          #Mapear valores dos rótulos
   tabela_freq = tabela_freq.value_counts().reset_index()                                                                                                                         #Criar frequência dos valores
   tabela_freq.columns = ['FAIXA_ETARIA','UTI','QTD']                                                                                                                             #Renomear colunas
@@ -330,37 +353,41 @@ def faixa_etaria_entrada_UTI():
 2.5 grafico_genero_UTI
 """
 
-def grafico_genero_UTI():
+ def grafico_genero_UTI(dados):
 
   '''
   Esta função criará o gráfico comparativo entre os 
   generos dos pacientes que tiveram ou não entrada na UTI.
+
+  
+  dados: dados que o modelo terá como entrada para realizar as
+  transformações nele
   '''
 
-  tabela_freq = pd.DataFrame(data={'FAIXA_ETARIA': list(dados_sem_valores_unicos['GENDER']), 'UTI': list(dados_sem_valores_unicos['ICU'])})    #Criar dataframe
-  tabela_freq['FAIXA_ETARIA'] = tabela_freq['FAIXA_ETARIA'].map({0:'Masculino',1:'Feminino'})                                                  #Mapear valores dos rótulos
-  tabela_freq = tabela_freq.value_counts().reset_index()                                                                                       #Criar frequência dos valores
-  tabela_freq.columns = ['GENERO','UTI','QTD']                                                                                                 #Renomear colunas
-  tabela_freq = pd.pivot_table(tabela_freq,'QTD','GENERO','UTI')                                                                               #Pivotar a tabela
+  tabela_freq = pd.DataFrame(data={'FAIXA_ETARIA': list(dados['GENDER']), 'UTI': list(dados['ICU'])})    #Criar dataframe
+  tabela_freq['FAIXA_ETARIA'] = tabela_freq['FAIXA_ETARIA'].map({0:'Masculino',1:'Feminino'})            #Mapear valores dos rótulos
+  tabela_freq = tabela_freq.value_counts().reset_index()                                                 #Criar frequência dos valores
+  tabela_freq.columns = ['GENERO','UTI','QTD']                                                           #Renomear colunas
+  tabela_freq = pd.pivot_table(tabela_freq,'QTD','GENERO','UTI')                                         #Pivotar a tabela
 
 
-  g = tabela_freq.plot(kind='bar',                                                #Criar gráfico
-                          color=['#808080']+['#800000'],                          #Escolher cores das barras
-                          figsize=(15, 8),                                        #Escolher tamanho da figura
-                          ylabel=False,                                           #Excluir rótulo do eixo y y
-                          legend=None)                                            #Excluir legenda
+  g = tabela_freq.plot(kind='bar',                                               #Criar gráfico
+                          color=['#808080']+['#800000'],                         #Escolher cores das barras
+                          figsize=(15, 8),                                       #Escolher tamanho da figura
+                          ylabel=False,                                          #Excluir rótulo do eixo y y
+                          legend=None)                                           #Excluir legenda
 
-  for rotulo in g.containers:                                                     #Criar rótulo de dados nas barras
+  for rotulo in g.containers:                                                    #Criar rótulo de dados nas barras
           g.bar_label(rotulo,fontsize=15,padding=5)
 
 
-  for spine in plt.gca().spines.values():                                         #Remover os eixos do gráfico
+  for spine in plt.gca().spines.values():                                        #Remover os eixos do gráfico
           spine.set_visible(False)
                             
-  plt.xticks(rotation=0, fontsize=15)                                             #Excluir valores do eixo x
-  plt.yticks([])                                                                  #Aumentar a fonte do eixo y
-  plt.xlabel(None)                                                                #Excluir rótulo do eixo y
-  plt.ylabel(None)                                                                #Excluir rótulo do eixo y
+  plt.xticks(rotation=0, fontsize=15)                                            #Excluir valores do eixo x
+  plt.yticks([])                                                                 #Aumentar a fonte do eixo y
+  plt.xlabel(None)                                                               #Excluir rótulo do eixo y
+  plt.ylabel(None)                                                               #Excluir rótulo do eixo y
 
 
   plt.title('Quantidade de pacientes que entraram ou não na UTI por gênero'+ 2*('\n'),fontsize=25,loc='left')           #Colocar o título
@@ -373,14 +400,17 @@ def grafico_genero_UTI():
 2.6 grafico_percentual_diferenca_sanguinea_5_menores
 """
 
-def grafico_percentual_diferenca_sanguinea_5_menores():
+def grafico_percentual_diferenca_sanguinea_5_menores(tabela_dados):
 
   '''
   Esta função criará o gráfico comparativo entre as menores diferenças 
   dos valores sanguíneos entre os pacientes que tiveram entrada na UTI 
   sob o que não tiveram.
+  
+  
+  tabela_dados: tabela das diferencas dos dados sanguineos dos pacientes.
   '''
-  g = diferenca_percentual.tail(5).plot(kind='barh',                              #Escolher cores das barras
+  g = tabela_dados.tail(5).plot(kind='barh',                                      #Escolher cores das barras
                                         color=['#808080'],
                                         figsize=(15, 8),                          #Escolher tamanho da figura
                                         ylabel=False,                             #Excluir rótulo do eixo y y
@@ -409,15 +439,18 @@ def grafico_percentual_diferenca_sanguinea_5_menores():
 2.7 grafico_percentual_diferenca_sanguinea_5_maiores
 """
 
-def grafico_percentual_diferenca_sanguinea_5_maiores():
+def grafico_percentual_diferenca_sanguinea_5_maiores(tabela_dados):
   
   '''
   Esta função criará o gráfico comparativo entre as maiores diferenças 
   dos valores sanguíneos entre os pacientes que tiveram entrada na UTI 
   sob o que não tiveram.
+  
+  tabela_dados: tabela das diferencas dos dados sanguineos dos pacientes.
+
   '''
-  diferenca_percentual.sort_values(by='mean',ascending=True,inplace=True)
-  g = diferenca_percentual.tail(5).plot(kind='barh',                              #Escolher cores das barras
+  tabela_dados.sort_values(by='mean',ascending=True,inplace=True)
+  g = tabela_dados.tail(5).plot(kind='barh',                                      #Escolher cores das barras
                                         color=['#808080'],
                                         figsize=(15, 8),                          #Escolher tamanho da figura
                                         ylabel=False,                             #Excluir rótulo do eixo y y
