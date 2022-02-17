@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Notebook_de_Funcoes.ipynb
+"""
+Notebook_de_Funcoes.ipynb
 
 
 Original file is located at
@@ -8,7 +9,7 @@ Original file is located at
 #Bootcamp Data Science Alura - Projeto Final
 
 ## Requirements
-
+"""
 !pip install pandas==1.3.5
 !pip install openpyxl==3.0.9
 !pip install numpy==1.21.0
@@ -30,7 +31,7 @@ import sklearn.utils.fixes
 sklearn.utils.fixes.MaskedArray = MaskedArray
 from skopt import BayesSearchCV
 
-
+"""
 Notebook de funções
 
 1. Funções de manipulação de dados
