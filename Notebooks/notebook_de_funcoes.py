@@ -300,7 +300,7 @@ def grafico_abaixo_acima_65anos(dados):
 
 
   plt.title('Comparativo entre pacientes abaixo e acima de 65 anos'+ 2*('\n'),fontsize=25,loc='left')           #Colocar o título
-  plt.text(-0.5,145,'A entrada na UTI é maior em pacientes com idade superior',fontsize=20,color='#800000')     #Colocar o subtítulo
+  plt.text(-0.5,950,'A entrada na UTI é maior em pacientes com idade superior',fontsize=20,color='#800000')     #Colocar o subtítulo
 
   plt.show()
 
@@ -480,29 +480,32 @@ def grafico_percentual_diferenca_sanguinea_5_maiores(tabela_dados):
 2.8 grafico_percentual_diferenca_sanguinea_5_maiores
 """
 
-def grafico_percentual_diferenca_indicadores_vitais():
+def grafico_percentual_diferenca_indicadores_vitais(tabela_dados):
   
   '''
   Esta função criará o gráfico comparativo entre as diferenças dos 
   indicadores vitais entre os pacientes que tiveram entrada na UTI 
   sob o que não tiveram.
-  '''
-  g = diferenca_percentual.plot(kind='barh',                                      #Escolher cores das barras
-                                          color=['#808080'],
-                                          figsize=(14, 6),                        #Escolher tamanho da figura
-                                          ylabel=False,                           #Excluir rótulo do eixo y y
-                                          legend=None)                            #Excluir legenda
+  
+  tabela_dados: tabela das diferencas dos dados vitais dos pacientes.
 
-  for rotulo in g.containers:                                                     #Criar rótulo de dados nas barras
+  '''
+  g = tabela_dados.plot(kind='barh',                             
+                        color=['#808080'],                      #Escolher cores das barras
+                        figsize=(14, 6),                        #Escolher tamanho da figura
+                        ylabel=False,                           #Excluir rótulo do eixo y
+                        legend=None)                            #Excluir legenda
+
+  for rotulo in g.containers:                                   #Criar rótulo de dados nas barras
           g.bar_label(rotulo,fontsize=15,padding=5)
 
-  for spine in plt.gca().spines.values():                                         #Remover os eixos do gráfico
+  for spine in plt.gca().spines.values():                       #Remover os eixos do gráfico
           spine.set_visible(False)
                             
-  plt.xticks([])                                                                  #Excluir valores do eixo x
-  plt.yticks(fontsize=15)                                                         #Aumentar a fonte do eixo y
-  plt.xlabel(None)                                                                #Excluir rótulo do eixo y
-  plt.ylabel(None)                                                                #Excluir rótulo do eixo y
+  plt.xticks([])                                                #Excluir valores do eixo x
+  plt.yticks(fontsize=15)                                       #Aumentar a fonte do eixo y
+  plt.xlabel(None)                                              #Excluir rótulo do eixo y
+  plt.ylabel(None)                                              #Excluir rótulo do eixo y
   plt.xlim(-50,50)
 
 
