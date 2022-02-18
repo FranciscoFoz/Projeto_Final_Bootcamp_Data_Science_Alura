@@ -265,14 +265,16 @@ def grafico_quantidade_entrada_e_nao_entrada_UTI(dados):
 2.3 grafico_abaixo_acima_65anos
 """
 
-def grafico_abaixo_acima_65anos():
+def grafico_abaixo_acima_65anos(dados):
 
   '''
   Esta função criará o gráfico comparativo entre os pacientes abaixo e 
   acima de 65 anos de idade que tiveram ou não entrada na UTI.
+  
+  dados: dados que serão transformados dentro da função.
   '''
 
-  tabela_freq = dados_sem_valores_unicos[['AGE_ABOVE65','ICU']].value_counts().reset_index()  #Criar DataFrame com a quantidade
+  tabela_freq = dados[['AGE_ABOVE65','ICU']].value_counts().reset_index()  #Criar DataFrame com a quantidade
   tabela_freq['AGE_ABOVE65'] = tabela_freq['AGE_ABOVE65'].map({0:'Abaixo',1:'Acima'})         #Mapear para substituir os valores de 0 e 1
   tabela_freq.columns = ['ACIMA_65_ANOS','UTI','QTD']                                         #Modificar as colunas
   tabela_freq = pd.pivot_table(tabela_freq,'QTD','ACIMA_65_ANOS','UTI')                       #Pivotar a tabela
