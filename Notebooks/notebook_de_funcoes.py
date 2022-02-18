@@ -353,7 +353,7 @@ def faixa_etaria_entrada_UTI(dados):
 2.5 grafico_genero_UTI
 """
 
- def grafico_genero_UTI(dados):
+def grafico_genero_UTI(dados):
 
   '''
   Esta função criará o gráfico comparativo entre os 
