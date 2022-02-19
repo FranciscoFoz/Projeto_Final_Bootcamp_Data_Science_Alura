@@ -300,7 +300,7 @@ def grafico_abaixo_acima_65anos(dados):
 
 
   plt.title('Comparativo entre pacientes abaixo e acima de 65 anos'+ 2*('\n'),fontsize=25,loc='left')           #Colocar o título
-  plt.text(-0.5,140,'A entrada na UTI é maior em pacientes com idade superior',fontsize=20,color='#800000')     #Colocar o subtítulo
+  plt.text(-0.5,145,'A entrada na UTI é maior em pacientes com idade superior',fontsize=20,color='#800000')     #Colocar o subtítulo
 
   plt.show()
 
