@@ -161,7 +161,7 @@ Durante o **desenvolvimento do modelo**, escolhi algumas etapas para definir o m
 
 Foi um modelo definido com uma métrica média não muito alta, mas ele poderá ser uma importante ferramenta para os profissionais da saúde poderem já se alertarem aos primeiros sinais dos pacientes ao entrarem no hospital.
 
-Comos próximos passos seria interessante que ele estivesse fazendo parte de um sistema integrado as ferramentas dos profissionais da saúde, mostrando a estimativa do modelo.
+Como próximos passos seria interessante que ele estivesse fazendo parte de um sistema integrado as ferramentas dos profissionais da saúde, mostrando a previsão do modelo para que o profissional pudesse tomar a decisão.
 
 ### **Referências**
 
