@@ -71,15 +71,15 @@ Este projeto realizará as 4 primeiras etapas do workflow de um projeto de Machi
 
 Desta forma o projeto foi dividido em 3 notebooks:
 
-* 1º Notebook: [**Aquisição e transformação dos dados**](https://colab.research.google.com/drive/1aZs1fhXObtr6nC63DpVjGebQ6Hi-pYuQ?usp=sharing)
+* 1º Notebook: [**Aquisição e transformação dos dados**](https://github.com/FranciscoFoz/Projeto_Final_Bootcamp_Data_Science_Alura/blob/main/Notebooks/Aquisicao_e_transformacao_dos_dados.ipynb)
   *    Limpeza
   *    Análise exploratória
 
-* 2º Notebook: [**Desenvolvimento do modelo**](https://colab.research.google.com/drive/1J6I65AjMZXiLiz8KGwaaQr1s-DALkKiq?usp=sharing)
+* 2º Notebook: [**Desenvolvimento do modelo**](https://github.com/FranciscoFoz/Projeto_Final_Bootcamp_Data_Science_Alura/blob/main/Notebooks/Desenvolvimento_do_modelo.ipynb)
   *    Treino
   *    Teste
 
-* 3º Notebook: [**Funções Criadas**](https://colab.research.google.com/drive/1zQMGbtZ3qG_CCBCOZ1Pl6-ea9irlXmW1?usp=sharing)
+* 3º Notebook: [**Notebooks de funções**](https://github.com/FranciscoFoz/Projeto_Final_Bootcamp_Data_Science_Alura/blob/main/Notebooks/Notebook_de_Funcoes.ipynb)
   
   Notebook com todas as funções criadas para o projeto.
 
