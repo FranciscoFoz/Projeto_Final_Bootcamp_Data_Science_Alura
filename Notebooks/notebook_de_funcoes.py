@@ -291,7 +291,10 @@ def grafico_abaixo_acima_65anos(dados):
 
   for spine in plt.gca().spines.values():                                                  #Remover os eixos do gráfico
       spine.set_visible(False)
-                        
+  
+
+  
+  plt.legend(['Não entrada','Entrada'])                                                    #Inserir legenda no gráfico
   plt.xticks(rotation=0, fontsize=15)                                                      #Excluir valores do eixo x
   plt.yticks([])                                                                           #Aumentar a fonte do eixo y
   plt.xlabel(None)                                                                         #Excluir rótulo do eixo y
@@ -337,7 +340,12 @@ def faixa_etaria_entrada_UTI(dados):
 
   for spine in plt.gca().spines.values():                                       #Remover os eixos do gráfico
         spine.set_visible(False)
-                          
+  
+
+  
+    
+  plt.legend(['Não entrada','Entrada'],                                         #Inserir legenda no gráfico
+             bbox_to_anchor=(0.99, 1.1),title='UTI')                            #Localização da legenda e título
   plt.xticks(rotation=0, fontsize=15)                                           #Excluir valores do eixo x
   plt.yticks([])                                                                #Aumentar a fonte do eixo y
   plt.xlabel(None)                                                              #Excluir rótulo do eixo y
@@ -375,9 +383,9 @@ def grafico_genero_UTI(dados):
 
   g = tabela_freq.plot(kind='bar',                                               #Criar gráfico
                           color=['#808080']+['#800000'],                         #Escolher cores das barras
-                          figsize=(15, 8),                                       #Escolher tamanho da figura
+                          figsize=(18, 8),                                       #Escolher tamanho da figura
                           ylabel=False,                                          #Excluir rótulo do eixo y y
-                          legend=None)                                           #Excluir legenda
+                          legend=True)                                           #Excluir legenda
 
   for rotulo in g.containers:                                                    #Criar rótulo de dados nas barras
           g.bar_label(rotulo,fontsize=15,padding=5)
@@ -385,7 +393,9 @@ def grafico_genero_UTI(dados):
 
   for spine in plt.gca().spines.values():                                        #Remover os eixos do gráfico
           spine.set_visible(False)
-                            
+  
+
+  plt.legend(['Não entrada','Entrada'],title='UTI')                              #Localização da legenda e título
   plt.xticks(rotation=0, fontsize=15)                                            #Excluir valores do eixo x
   plt.yticks([])                                                                 #Aumentar a fonte do eixo y
   plt.xlabel(None)                                                               #Excluir rótulo do eixo y
@@ -398,83 +408,6 @@ def grafico_genero_UTI(dados):
 
   plt.show()
 
-"""
-2.6 grafico_percentual_diferenca_sanguinea_5_menores
-"""
-
-def grafico_percentual_diferenca_sanguinea_5_menores(tabela_dados):
-
-  '''
-  Esta função criará o gráfico comparativo entre as menores diferenças 
-  dos valores sanguíneos entre os pacientes que tiveram entrada na UTI 
-  sob o que não tiveram.
-  
-  
-  tabela_dados: tabela das diferencas dos dados sanguineos dos pacientes.
-  '''
-  g = tabela_dados.tail(5).plot(kind='barh',                                      #Escolher cores das barras
-                                        color=['#808080'],
-                                        figsize=(15, 8),                          #Escolher tamanho da figura
-                                        ylabel=False,                             #Excluir rótulo do eixo y y
-                                        legend=None)                              #Excluir legenda
-
-  for rotulo in g.containers:                                                     #Criar rótulo de dados nas barras
-        g.bar_label(rotulo,fontsize=15,padding=5)
-
-  for spine in plt.gca().spines.values():                                         #Remover os eixos do gráfico
-        spine.set_visible(False)
-                          
-  plt.xticks([])                                                                  #Excluir valores do eixo x
-  plt.yticks(fontsize=15)                                                         #Aumentar a fonte do eixo y
-  plt.xlabel(None)                                                                #Excluir rótulo do eixo y
-  plt.ylabel(None)                                                                #Excluir rótulo do eixo y
-  plt.xlim(-70,0)
-
-
-
-  plt.text(-80,4.5,'Percentual de diferença dos indicadores sanguíneos dos pacientes'+ 2*('\n'),fontsize=25)           #Colocar o título
-  plt.text(-80,4.2,'Top 5 menores entre os pacientes que tiveram entrada pelos que não tiveram  '+ 2*('\n'),fontsize=20)           #Colocar o título
-
-  plt.show()
-
-"""
-2.7 grafico_percentual_diferenca_sanguinea_5_maiores
-"""
-
-def grafico_percentual_diferenca_sanguinea_5_maiores(tabela_dados):
-  
-  '''
-  Esta função criará o gráfico comparativo entre as maiores diferenças 
-  dos valores sanguíneos entre os pacientes que tiveram entrada na UTI 
-  sob o que não tiveram.
-  
-  tabela_dados: tabela das diferencas dos dados sanguineos dos pacientes.
-
-  '''
-  tabela_dados.sort_values(by='mean',ascending=True,inplace=True)
-  g = tabela_dados.tail(5).plot(kind='barh',                                      #Escolher cores das barras
-                                        color=['#808080'],
-                                        figsize=(15, 8),                          #Escolher tamanho da figura
-                                        ylabel=False,                             #Excluir rótulo do eixo y y
-                                        legend=None)                              #Excluir legenda
-
-  for rotulo in g.containers:                                                     #Criar rótulo de dados nas barras
-        g.bar_label(rotulo,fontsize=15,padding=5)
-
-  for spine in plt.gca().spines.values():                                         #Remover os eixos do gráfico
-        spine.set_visible(False)
-                          
-  plt.xticks([])                                                                  #Excluir valores do eixo x
-  plt.yticks(fontsize=15)                                                         #Aumentar a fonte do eixo y
-  plt.xlabel(None)                                                                #Excluir rótulo do eixo y
-  plt.ylabel(None)                                                                #Excluir rótulo do eixo y
-
-
-
-  plt.text(-15,4.5,'Percentual de diferença dos indicadores sanguíneos dos pacientes'+ 2*('\n'),fontsize=25)                #Colocar o título
-  plt.text(-15,4.2,'Top 5 maiores entre os pacientes que tiveram entrada pelos que não tiveram  '+ 2*('\n'),fontsize=20)    #Colocar o título
-
-  plt.show()
 
 """
 2.8 grafico_percentual_diferenca_sanguinea_5_maiores
