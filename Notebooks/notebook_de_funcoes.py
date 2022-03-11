@@ -452,7 +452,7 @@ def grafico_percentual_diferenca_sanguinea_5_menores(tabela_dados):
 2.7 grafico_percentual_diferenca_indicadores_vitais
 """
 
-    def grafico_percentual_diferenca_indicadores_vitais(tabela_dados):
+def grafico_percentual_diferenca_indicadores_vitais(tabela_dados):
   
   '''
   Esta função criará o gráfico comparativo entre as diferenças dos 
