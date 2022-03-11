@@ -410,6 +410,44 @@ def grafico_genero_UTI(dados):
 
 
 """
+2.6 grafico_percentual_diferenca_sanguinea_5_menores
+"""
+
+def grafico_percentual_diferenca_sanguinea_5_menores(tabela_dados):
+
+  '''
+  Esta função criará o gráfico comparativo entre as menores diferenças 
+  dos valores sanguíneos entre os pacientes que tiveram entrada na UTI 
+  sob o que não tiveram.
+
+  tabela_dados: tabela das diferencas dos dados sanguineos dos pacientes.
+  '''
+  g = tabela_dados.tail(5).plot(kind='barh',                                      #Escolher cores das barras
+                                        color=['#808080'],
+                                        figsize=(15, 8),                          #Escolher tamanho da figura
+                                        ylabel=False,                             #Excluir rótulo do eixo y y
+                                        legend=None)                              #Excluir legenda
+
+  for rotulo in g.containers:                                                     #Criar rótulo de dados nas barras
+        g.bar_label(rotulo,fontsize=15,padding=5)
+
+  for spine in plt.gca().spines.values():                                         #Remover os eixos do gráfico
+        spine.set_visible(False)
+                          
+  plt.xticks([])                                                                  #Excluir valores do eixo x
+  plt.yticks(fontsize=15)                                                         #Aumentar a fonte do eixo y
+  plt.xlabel(None)                                                                #Excluir rótulo do eixo y
+  plt.ylabel(None)                                                                #Excluir rótulo do eixo y
+  plt.xlim(-70,0)
+
+
+
+  plt.text(-80,4.5,'Percentual de diferença dos indicadores sanguíneos dos pacientes'+ 2*('\n'),fontsize=25)               #Colocar o título
+  plt.text(-80,4.2,'Top 5 menores entre os pacientes que tiveram entrada pelos que não tiveram  '+ 2*('\n'),fontsize=20)   #Colocar o título
+
+  plt.show()
+    
+"""
 2.8 grafico_percentual_diferenca_sanguinea_5_maiores
 """
 
