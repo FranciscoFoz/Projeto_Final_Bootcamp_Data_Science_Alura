@@ -3,11 +3,13 @@
 
 # Previsão da admissão na UTI: <br> Um modelo de Machine Learning a partir de dados dos pacientes do Hospital Sírio Libanês
 
+</a>
 <p align="center"> 
-<img src="https://www.hospitalsiriolibanes.org.br/hospital/PublishingImages/Paginas/unidades-terapia-intensiva/unidade-terapia-intensiva-1.jpg" height="450" width="900"></a>
+<img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" >
+</a>
 
 
-Fonte: </a> <a href="https://www.hospitalsiriolibanes.org.br/hospital/Paginas/unidades-terapia-intensiva.aspx">Sírio-Libanês </a>
+Fonte: </a> <a href="https://unsplash.com/photos/y5hQCIn1c6o"> @gpiron </a>
 
 
 
