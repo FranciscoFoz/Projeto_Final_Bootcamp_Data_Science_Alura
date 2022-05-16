@@ -573,12 +573,13 @@ def grafico_matriz_confusao(modelo,titulo,dados):
 3.1 roda_modelo
 """
 
-def roda_modelo(modelo,dados):
+def roda_modelo(modelo,dados,nome_modelo):
 
   '''
   Esta função rodará o modelo, imprimirá o AUC médio e 
   o relatório da classificação.
-  
+
+
   modelo: modelo que será rodado dentro da função.
 
   dados: dados que serão transformados dentro da função.
@@ -596,9 +597,17 @@ def roda_modelo(modelo,dados):
   prob_predict = modelo.predict_proba(x_test)
 
   auc = roc_auc_score(y_test,prob_predict[:,1])
-  print(f"AUC {auc}")
-  print("\nClassification Report")
-  print(classification_report(y_test,predicao))
+
+  metricas = classification_report(y_test, predicao,output_dict=True)
+  metricas = pd.DataFrame(metricas)
+  df_metricas = pd.DataFrame({'AUC': auc,
+                              'F1-score_0': [metricas.iloc[2,0]],
+                              'F1-score_1': [metricas.iloc[2,1]],
+                              'Acurácia' : [metricas.iloc[0,2]]},
+                               index=[nome_modelo])
+
+
+ return df_metricas
 
 """
 3.2 roda_n_modelos
