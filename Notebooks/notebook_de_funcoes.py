@@ -605,9 +605,7 @@ def roda_modelo(modelo,dados,nome_modelo):
                               'F1-score_1': [metricas.iloc[2,1]],
                               'Acurácia' : [metricas.iloc[0,2]]},
                                index=[nome_modelo])
-
-
- return df_metricas
+  return df_metricas
 
 """
 3.2 roda_n_modelos
