@@ -13,7 +13,7 @@ O objetivo desse projeto foi criar um modelo de Machine Learing que pudesse cons
 | -------------  | --- |
 | :sparkles: Nome        | **Previsão da admissão na UTI**
 | :label: Tecnologias | python
-| :rocket: URL         |
+| :rocket: URL         | https://github.com/FranciscoFoz/Projeto_Final_Bootcamp_Data_Science_Alura
 | :fire: Desafio     |
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
