@@ -1,5 +1,5 @@
 # Bootcamp Data Science Alura - Projeto Final
-# Previsão da admissão na UTI: <br> Um modelo de Machine Learning a partir de dados dos pacientes do Hospital Sírio Libanês
+# Previsão da admissão na UTI: Um modelo de Machine Learning a partir de dados dos pacientes do Hospital Sírio Libanês
 
 Neste repositório você encontrará o meu projeto final do Bootcamp Data Science 2021-22 da [Alura](https://www.alura.com.br/).
 
