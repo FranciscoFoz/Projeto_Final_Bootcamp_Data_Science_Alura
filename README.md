@@ -1,17 +1,26 @@
-
 # Bootcamp Data Science Alura - Projeto Final
-
 # Previsão da admissão na UTI: <br> Um modelo de Machine Learning a partir de dados dos pacientes do Hospital Sírio Libanês
 
-</a>
-<p align="center"> 
-<img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" >
-</a>
+Neste repositório você encontrará o meu projeto final do Bootcamp Data Science 2021-22 da [Alura](https://www.alura.com.br/).
+
+Devido a pandemia de COVID-19, os hospitais ficaram sobrecarregados faltando recursos de saúde como leitos de UTI, profissionais entre outros. 
+Houve a necessidade de prever a quantidade necessária de recursos, principalmente de leitos de UTI. 
+
+O objetivo desse projeto foi criar um modelo de Machine Learing que pudesse conseguir otimizar a necessidade real da permissão de entrada na UTI de acordo com dados individuais dos pacientes.
 
 
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Previsão da admissão na UTI**
+| :label: Tecnologias | python
+| :rocket: URL         |
+| :fire: Desafio     |
+
+<!-- Inserir imagem com a #vitrinedev ao final do link -->
+![](https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80#vitrinedev)
 Fonte: </a> <a href="https://unsplash.com/photos/y5hQCIn1c6o"> @gpiron </a>
 
-
+## Detalhes do projeto
 
 Elaborado por Francico Foz
 
@@ -19,29 +28,13 @@ Elaborado por Francico Foz
 
 ---
 
-## Introdução
+## Projeto 
 
-Olá! 
-
-Neste repositório você encontrará o meu projeto final do Bootcamp Data Science 2021-22 da [Alura](https://www.alura.com.br/).
-
-Durante todo o Bootcamp tive a oportunidade de mergulhar no oceano da Ciência de Dados a partir de dados reais da área da saúde em 6 módulos.
-
-
-## Projeto
-
-### Contexto
-
-Devido a pandemia de COVID-19, os hospitais ficaram sobrecarregados faltando recursos de saúde como leitos de UTI, profissionais entre outros. 
-
-Há a necessidade de prever a quantidade necessária de recursos, principalmente de leitos de UTI. 
-Para isso foram utilizados dados clínicos individuais de pacientes afim de se estabelecer um modelo e conseguir otimizar a necessidade real da permissão de entrada.
-
-Foram utilizados os dados disponibilizados pelo Hospital Sírio-Libanês no [Kaggle](https://www.kaggle.com/S%C3%ADrio-Libanes/covid19) .
 
 ### Conjunto de Dados
 
-Ele é formado por dados anônimos do Hospital Sírio-Libanês (São Paulo e Brasília). 
+Foram utilizados os dados disponibilizados pelo Hospital Sírio-Libanês no [Kaggle](https://www.kaggle.com/S%C3%ADrio-Libanes/covid19) .
+
 Os dados foram limpos e dimensionados em cada coluna de com o "Min Max Scaler" para ficar entre -1 e 1.
 
 A quantidade de características (colunas) para cada tipo de informação agrupadas são:
@@ -84,7 +77,6 @@ Desta forma o projeto foi dividido em 3 notebooks:
 * 3º Notebook: [**Notebooks de funções**](https://github.com/FranciscoFoz/Projeto_Final_Bootcamp_Data_Science_Alura/blob/main/Notebooks/Notebook_de_Funcoes.ipynb)
   
   Notebook com todas as funções criadas para o projeto.
-
 
 
 
